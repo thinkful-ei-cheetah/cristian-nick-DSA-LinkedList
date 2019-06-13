@@ -173,10 +173,11 @@ function display(LL) {
     currNode = currNode.next
   }
 
-  return output
+  console.log(output)
+  // return output
 }
 
-console.log(display(LL))
+display(LL)
 
 function size(LL) {
   let size = 0
@@ -256,3 +257,29 @@ function findLast(LL) { //[1-> 2 -> 3]
 //     newNode.next = 2
 
 // 4. Removes duplicates in a Linked List with O(n^2)
+
+function reverseListIter(LL) { // A -> B -> C
+  let currNode = LL.head; // A
+  let prevNode = LL.head; // A
+  let nextNode = currNode.next; // B
+
+  while(nextNode !== null) {
+    if(currNode === prevNode) { 
+      currNode.next = null; // A -> null
+    } else {
+      currNode.next = prevNode // B -> A -> null
+    }
+    prevNode = currNode; // prev = B
+    currNode = nextNode; // curr = C
+    nextNode = nextNode.next; // next = null
+  }
+
+  if(nextNode === null) {
+    LL.head = currNode // head -> C -> B
+    currNode.next = prevNode
+  }
+
+  return LL
+}
+
+display(reverseListIter(LL))
