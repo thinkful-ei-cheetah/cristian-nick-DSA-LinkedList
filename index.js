@@ -294,20 +294,47 @@ function thirdToLast(LL) {
   return currNode.val
 }
 
+// function nToLast(LL, n) {
+//   let currNode = LL.head
+//   let next = currNode + 
+
+//   for(let i=1; i < n; i++) {
+    
+//   }
+
+//   while (currNode !== null) {
+//     currNode = currNode.next;
+//   }
+
+//   return currNode.val
+// }
+
 // console.log(thirdToLast(LL))
 
-function middle(LL) {
-  let currNode = LL.head;
-  let arr = [];
+// function middle(LL) {
+//   let currNode = LL.head;
+//   let arr = [];
 
-  while (currNode !== null) {
-    arr.push(currNode.val);
-    currNode = currNode.next;
+//   while (currNode !== null) {
+//     arr.push(currNode.val);
+//     currNode = currNode.next;
+//   }
+
+//   const item = arr[Math.floor(arr.length/2)]
+
+//   return LL.find(`${item}`)
+// }
+
+function middle(LL) {
+  let slowNode = LL.head;
+  let fastNode = LL.head;
+
+  while (fastNode !== null) {
+    fastNode = fastNode.next.next
+    slowNode = slowNode.next
   }
 
-  const item = arr[Math.floor(arr.length/2)]
-
-  return LL.find(`${item}`)
+  return slowNode.val;
 }
 
 console.log(middle(LL))
