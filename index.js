@@ -282,4 +282,32 @@ function reverseListIter(LL) { // A -> B -> C
   return LL
 }
 
-display(reverseListIter(LL))
+// display(reverseListIter(LL))
+
+function thirdToLast(LL) {
+  let currNode = LL.head
+
+  while (currNode.next.next.next !== null) {
+    currNode = currNode.next;
+  }
+
+  return currNode.val
+}
+
+// console.log(thirdToLast(LL))
+
+function middle(LL) {
+  let currNode = LL.head;
+  let arr = [];
+
+  while (currNode !== null) {
+    arr.push(currNode.val);
+    currNode = currNode.next;
+  }
+
+  const item = arr[Math.floor(arr.length/2)]
+
+  return LL.find(`${item}`)
+}
+
+console.log(middle(LL))
